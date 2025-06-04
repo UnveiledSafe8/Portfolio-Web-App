@@ -2,18 +2,220 @@
 <html lang="en">
     <head>
         <title>Anthony Schurle's Resume</title>
-        <link rel="stylesheet" href="/frontend/dist/index.css">
+        <link rel="stylesheet" href="/frontend/dist/styles/index.css">
         <meta charset="UTF-8">
     </head>
     <body>
+        <script defer src="/frontend/dist/scripts/index.js"></script>
+        <!--<header>
+            <nav>
+                <ul>
+                    <li><a></a></li>
+                    <li><a></a></li>
+                </ul>
+            </nav>
+        </header> -->
         <main>
-            <section>
-                <video class="video-bg"></video>
+            <section id="landing">
+                <video class="video-bg" muted autoplay loop></video>
+                <div class="bg-overlay"></div>
                 <div class="section-wrapper">
-                    <h1>Anthony Schurle</h1>
-                    <p>Software Engineer & Hardware Enthusiast</p>
+                    <div id="landing-content">
+                        <h1>Anthony Schurle</h1>
+                        <p>Software Engineer & Hardware Enthusiast</p>
+                    </div>
+                </div>
+            </section>
+            <section id="about">
+                <img id="headshot" alt="headshot" src="/frontend/dist/assets/imgs/headshot.jpg">
+                <div class="section-wrapper">
+                    <div class="section-heading">
+                        <h2>Hey, I'm Anthony.</h2>
+                        <p>I'm a optimization-minded, detail oriented software engineer passionate about combining clean code with efficient design.</p>
+                        <div class="divider"></div>
+                    </div>
+                    <div class="section-content">
+                        <p>
+                            I'm a first year student at Rice University in Houston studying computer science. I have experience developing and designing software for various
+                            applications, from simple landing pages to progressive web applications. I strive to create software that not only functions efficiently, but also
+                            aligns with clean coding standards.
+                        </p>
+                        <p>
+                            I love learning new and better ways to create seamless experiences with clean, efficient, and scalable code. I consider work an ongoing education, and
+                            I'm always looking for opportunities to work with those who are willing to share their knowledge as much as I want to learn.
+                        </p>
+                        <p>When I'm not in front of a computer screen, I'm probably cheerleading for the university team, tinkering in my workshop, or reading a new book!</p>
+                    </div>
+                </div>
+            </section>
+            <section id="skills">
+                <div class="section-wrapper">
+                    <div class="section-heading">
+                        <h2>Skills</h2>
+                        <div class="divider"></div>
+                    </div>
+                    <div class="section-content">
+                        <div class="skill-topic" id="technology">
+                            <div class="skill-topic-heading">
+                                <img alt="gear" src="/frontend/dist/assets/icons/gear.svg">
+                                <h3>Development</h3>
+                            </div>
+                            <div class="skill-topic-content">
+                                <div class="technology-card"><img alt="Python" src="/frontend/dist/assets/icons/python.svg"></div>
+                                <div class="technology-card"><img alt="fastAPI" src="/frontend/dist/assets/icons/fastAPI.svg"></div>
+                                <div class="technology-card"><img alt="Javascript" src="/frontend/dist/assets/icons/javascript.svg"></div>
+                                <div class="technology-card"><img alt="Typescript" src="/frontend/dist/assets/icons/typescript.svg"></div>
+                                <div class="technology-card"><img alt="HTML" src="/frontend/dist/assets/icons/html.svg"></div>
+                                <div class="technology-card"><img alt="CSS" src="/frontend/dist/assets/icons/css.svg"></div>
+                                <div class="technology-card"><img alt="SASS" src="/frontend/dist/assets/icons/sass.svg"></div>
+                                <div class="technology-card"><img alt="PostgreSQL" src="/frontend/dist/assets/icons/postgresql.svg"></div>
+                                <div class="technology-card"><img alt="Docker" src="/frontend/dist/assets/icons/docker.svg"></div>
+                            </div>
+                        </div>
+                        <div class="skill-topic" id="design">
+                            <div class="skill-topic-heading">
+                                <img alt="paint-palette" src="/frontend/dist/assets/icons/paint-palette.svg">
+                                <h3>Design</h3>
+                            </div>
+                            <div class="skill-topic-content">
+                                <div class="technology-card"><img alt="Blender" src="/frontend/dist/assets/icons/blender.svg"></div>
+                                <div class="technology-card"><img alt="Unity" src="/frontend/dist/assets/icons/unity-game-engine.svg"></div>
+                                <div class="technology-card"><img alt="Audacity" src="/frontend/dist/assets/icons/audacity.svg"></div>
+                                <div class="technology-card"><img alt="Canva" src="/frontend/dist/assets/icons/canva.svg"></div>
+                            </div>
+                        </div>
+                        <div class="skill-topic" id="tools">
+                            <div class="skill-topic-heading">
+                                <img alt="tools" src="/frontend/dist/assets/icons/tools.svg">
+                                <h3>Tools</h3>
+                            </div>
+                            <div class="skill-topic-content">
+                                <ul>
+                                    <li>Git & Github</li>
+                                    <li>Command Line</li>
+                                    <li>Browser Dev Tools</li>
+                                    <li>VPS Deployment</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="skill-topic" id="knowledge">
+                            <div class="skill-topic-heading">
+                                <img alt="light bulb" src="/frontend/dist/assets/icons/light-bulb.svg">
+                                <h3>Knowledge</h3>
+                            </div>
+                            <div class="skill-topic-content">
+                                <ul>
+                                    <li>SEO</li>
+                                    <li>Data Structures & Algorithms</li>
+                                    <li>Systems</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="resume">
+                <div class="section-wrapper">
+                    <div class="section-heading">
+                        <h2>Check Out My Resume!</h2>
+                    </div>
+                    <div class="section-content">
+                        <img alt="download" src="/frontend/dist/assets/icons/download.svg">
+                    </div>
+                </div>
+            </section>
+            <section id="projects">
+                <div class="section-wrapper">
+                    <div class="section-heading">
+                        <h2>Projects</h2>
+                        <div class="divider"></div>
+                    </div>
+                    <div class="section-content">
+                        <div id="projects-container">
+                            <div class="project">
+                                <img src="/frontend/dist/assets/imgs/PROJECT_portfolio.png">
+                                <h3>Personal Portfolio V1</h3>
+                                <p>This was my first portfolio website that I built in 2025. It's a simple one-pager.</p>
+                                <ul>
+                                    <li>HTML</li>
+                                    <li>CSS</li>
+                                    <li>Python</li>
+                                    <li>fastAPI</li>
+                                    <li>Typescript</li>
+                                    <li>PostgreSQL</li>
+                                    <li>Docker</li>
+                                </ul>
+                            </div>
+                            <div class="divider"></div>
+                            <div class="project">
+                                <img src="/frontend/dist/assets/imgs/PROJECT_signalsiege.png">
+                                <h3>SignalSiege</h3>
+                                <p>A strategic web-based game inspired by the classic board game Go, reimagined with a modern cyber warfare aesthetic. Players deploy virtual
+                                    "routers" across a grid to capture digital territory, simulate data control, and outmaneuver opponents through tactical placement and area
+                                    denial. Designed with a sleek, neon-accented interface, Signal Siege blends ancient gameplay mechanics with futuristic visuals to create a
+                                    competitive experience that feels both timeless and cutting-edge. (unfinished)</p>
+                                <ul>
+                                    <li>HTML</li>
+                                    <li>CSS</li>
+                                    <li>Python</li>
+                                    <li>fastAPI</li>
+                                    <li>Javascript</li>
+                                    <li>PostgreSQL</li>
+                                    <li>Docker</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="more-projects">
+                <div class="section-wrapper">
+                    <div class="section-heading">
+                        <h2>See More Projects</h2>
+                    </div>
+                    <div class="section-content">
+                        <img alt="github" src="/frontend/dist/assets/icons/gituhb.svg">
+                    </div>
+                </div>
+            </section>
+            <section id="contact">
+                <div id="contact-bg"></div>
+                <div class="bg-overlay"></div>
+                <div class="section-wrapper">
+                    <div class="section-heading">
+                        <h2>Get In Touch</h2>
+                        <div class="divider"></div>
+                    </div>
+                    <div class="section-content">
+                        <form method="post">
+                            <div id="form-subheading">
+                                <p>Have a sweet project in mind or just want to say hi?</p>
+                                <p>Feel free to send me a message!</p>
+                            </div>
+                            <label for="name">Name</label>
+                            <input type="text" required id="name">
+                            <label for="email">Email</label>
+                            <input type="email" required id="email">
+                            <label for="subject">Subject</label>
+                            <input type="text" required id="subject">
+                            <label for="message">Message</label>
+                            <textarea required id="message"></textarea>
+                            <button type="submit">Send Message</button>
+                        </form>
+                    </div>
                 </div>
             </section>
         </main>
+        <footer>
+            <address>
+                <ul>
+                    <li><a href="mailto: as556@rice.edu" target="_blank"><img src="/frontend/dist/assets/icons/mail.svg"></a></li>
+                    <li><a href="https://github.com/UnveiledSafe8" target="_blank"><img src="/frontend/dist/assets/icons/gituhb.svg"></a></li>
+                    <li><a href="https://leetcode.com/u/Anthony_Schurle/" target="_blank"><img src="/frontend/dist/assets/icons/leetcode.svg"></a></li>
+                    <li><a href="https://www.linkedin.com/in/anthony-schurle/" target="_blank"><img src="/frontend/dist/assets/icons/linkedin.svg"></a></li>
+                </ul>
+            </address>
+            <p>Created By Anthony Schurle</p>
+        </footer>
     </body>
 </html>

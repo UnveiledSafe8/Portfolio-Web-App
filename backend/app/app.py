@@ -9,3 +9,7 @@ app.mount("/frontend/dist", StaticFiles(directory="frontend/dist"), name="fronte
 @app.get("/")
 def index():
     return FileResponse("frontend/dist/index.html")
+
+@app.get("/resume")
+def get_resume():
+    return FileResponse("/assets/docs/resume.pdf")

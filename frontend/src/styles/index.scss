@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
 $primary-color: #7F00FF;
 $primary-dark: #5900B3;
 $primary-light: #B266FF;
-$secondary-color: 	#D4AF37;
+$secondary-color: #D4AF37;
+$secondary-dark: #A17F27;
 $text-primary: #F0F0F5;
 $text-secondary: #9696A0;
 $bg1-color: #121219;
@@ -16,12 +19,457 @@ $error: #E53935;
 }
 
 html {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Inter", sans-serif;
     scroll-behavior: smooth;
+
+    body {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        min-height: 100vh;
+        border: 12px ridge $secondary-dark;
+        overflow-x: hidden;
+
+        main {
+        width: 100%;
+        height: 100%;
+        color: $text-primary;
+        }
+    }
 }
 
-body {
+.video-bg {
     width: 100%;
     height: 100%;
+    position: absolute;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.bg-overlay {
+    width: 100%;
+    height:100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(3px);
+}
+
+section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.section-wrapper {
+    z-index: 2;
+    padding: 5%;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+section:nth-of-type(odd) {
+    background-color: $bg1-color;
+}
+
+section:nth-of-type(even) {
+    background-color: $bg2-color;
+}
+
+#landing {
+    height: calc(100vh - 32px);
     min-height: 100vh;
+}
+
+#landing-content {
+    position: relative;
+    top: -25%;
+}
+
+#landing-content h1 {
+    color: $primary-color;
+    font-size: 4.5em;
+    text-align: center;
+    text-shadow: 0 0 4px $primary-color, 0 0 8px $primary-color;
+    margin-bottom: 0.5em;
+    transition: all 0.3s ease-in-out;
+}
+
+#landing-content p {
+    color: $primary-color;
+    font-size: 1.5em;
+    text-align: center;
+    text-shadow: 0 0 4px $primary-color, 0 0 8px $primary-color;
+    transition: all 0.4s ease-in-out;
+}
+
+.divider {
+    width: 10em;
+    border: 2px solid $primary-color;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.section-heading {
+    text-align: left;
+    width: 100%;
+    padding-right: 40%;
+    margin-right: auto;
+    display: block;
+}
+
+.section-heading h2 {
+    font-size: 3em;
+    color: $text-primary;
+    margin-bottom: 0.2em;
+}
+
+.section-heading p {
+    font-size: 1.5em;
+    color: $text-primary;
+    line-height: 2.5rem;
+}
+
+.section-content {
+    width: 100%;
+    line-height: 2rem;
+    font-size: 1.2em;
+    color: $text-secondary;
+}
+
+#about .section-content {
+    padding-right: 40%;
+}
+
+#about .section-content p {
+    margin-bottom: 1rem;
+}
+
+#headshot {
+    position: absolute;
+    border-radius: 50%;
+    border: 4px ridge $secondary-color;
+    width: 22%;
+    object-fit: cover;
+    aspect-ratio: 1;
+    right: 8%;
+    top: 25%;
+}
+
+#skills .section-content {
+    display: grid;
+    grid-template-areas: "tech tech design design design" "tech tech tools tools knowledge";
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6em;
+    padding-right: 15%;
+}
+
+.skill-topic {
+    padding: 2%;
+    min-height: 200px;
+}
+
+.skill-topic#technology {
+    grid-area: tech;
+    min-height: 450px;
+}
+
+.skill-topic#technology .skill-topic-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.skill-topic#design {
+    grid-area: design;
+}
+
+#design .skill-topic-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.skill-topic#tools {
+    grid-area: tools;
+}
+
+#tools .skill-topic-content, #knowledge .skill-topic-content {
+    padding-left: 5%;
+}
+
+#tools .skill-topic-content ul, #knowledge .skill-topic-content ul {
+    list-style: square;
+    font-size: 0.8em;
+}
+
+.skill-topic#knowledge {
+    grid-area: knowledge;
+}
+
+.technology-card {
+    width: 7rem;
+    aspect-ratio: 1;
+    border: 2px ridge $primary-light;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: grayscale(1);
+    transition: all 0.2s ease-in-out;
+}
+
+.technology-card img {
+    width: 65%;
+    aspect-ratio: 1;
+}
+
+.technology-card:hover {
+    filter: grayscale(0);
+    transform: scale(1.05);
+}
+
+#design .technology-card {
+    width: 5rem;
+}
+
+.skill-topic-heading {
+    color: $text-primary;
+    font-size: 1.4em;
+    margin-bottom: 1em;
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+    transform: translateX(-2rem);
+}
+
+.skill-topic-heading img {
+    aspect-ratio: 1;
+    width: 3rem;
+    filter: invert(1);
+}
+
+#resume, #more-projects {
+    background: $secondary-dark;
+    transition: all 0.3s ease-in-out;
+}
+
+#resume:hover, #more-projects:hover {
+    cursor: pointer;
+}
+
+#resume .section-heading, #more-projects .section-heading {
+    font-size: 0.5em;
+    transition: all 0.3s ease-in-out;
+}
+
+#resume .section-wrapper, #more-projects .section-wrapper {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#resume .section-heading, #more-projects .section-heading {
+    padding: 0;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#resume .section-wrapper, #more-projects .section-wrapper {
+    padding: 3%;
+}
+
+#resume .section-content, #more-projects .section-content {
+    padding: 0;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease-in-out;
+}
+
+#resume .section-content img, #more-projects .section-content img {
+    width: 3.5em;
+    aspect-ratio: 1;
+    filter: invert(1);
+}
+
+#projects .section-wrapper {
+    padding-bottom: 10rem;
+}
+
+.project img {
+    width: 90%;
+    display: block;
+}
+
+.project h3 {
+    margin-top: 2em;
+    color: $text-primary;
+    font-size: 1.5em;
+}
+
+.project p {
+    font-size: 0.9em;
+    margin-top: 1.5em;
+}
+
+.project ul {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em;
+    flex-wrap: wrap;
+    list-style: none;
+    font-size: 0.6em;
+    margin-top: 1.5em;
+}
+
+.project ul li {
+    background-color: #333;
+    color: #777;
+    border-radius: 3px;
+    padding: 0 0.4rem;
+}
+
+#projects-container .divider {
+    margin-top: 8rem;
+    margin-bottom: 8rem;
+}
+
+#contact .section-heading {
+    text-align: center;
+    padding: 0;
+    color: $text-primary;
+}
+
+#contact .section-heading .divider {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#form-subheading {
+    margin-bottom: 1.5em;
+    font-size: 0.9em;
+    color: $text-primary;
+}
+
+#contact .section-content {
+    text-align: center;
+}
+
+#contact-bg {
+    background-image: url("/frontend/dist/assets/imgs/servers.jpg");
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    background-attachment: fixed;
+}
+
+#contact label, #contact input, #contact textarea {
+    display: block;
+    text-align: left;
+    width: 30%;
+    margin: 0 auto;
+    color: $text-primary;
+    border: none;
+}
+
+#contact input, #contact textarea {
+    border-bottom: 4px ridge gray;
+    background: none;
+    margin-bottom: 2em;
+    padding: 0.5em;
+    transition: all 0.3s ease-in-out;
+}
+
+#contact input:focus, #contact textarea:focus {
+    border-bottom-color: $primary-color;
+}
+
+#contact label {
+    font-size: 0.8em;
+    margin-bottom: 0.5em;
+}
+
+#contact button {
+    border-radius: 6px;
+    text-align: center;
+    font-size: 0.95em;
+    padding: 0.8em 1.5em;
+    background: none;
+    border: 2px solid $secondary-color;
+    color: $secondary-color;
+    margin-top: 3em;
+    transition: all 0.2s ease-in-out;
+}
+
+#contact button:hover {
+    background-color: $secondary-color;
+    color: $text-primary;
+    cursor: pointer;
+}
+
+footer {
+    background: linear-gradient(to right, $primary-light, $primary-color, $primary-dark);
+    padding: 3%;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    align-items: center;
+    justify-content: center;
+}
+
+footer address {
+    width: 100%;
+}
+
+footer p {
+    color: $text-primary;
+    font-size: 1.2em;
+}
+
+footer ul {
+    display: flex;
+    flex-direction: row;
+    gap: 1.2em;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+}
+
+footer li {
+    min-width: 25px;
+    width: 2%;
+    max-width: 100px;
+    transition: all 0.2s ease-in-out;
+}
+
+footer li img {
+    filter: invert(1);
+    height: 100%;
+    width: 100%;
+    aspect-ratio: 1;
+}
+
+footer li:hover {
+    transform: translateY(-5px) scale(1.05);
+    cursor: pointer;
 }
