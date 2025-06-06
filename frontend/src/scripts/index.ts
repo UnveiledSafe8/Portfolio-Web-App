@@ -11,10 +11,23 @@ const successColor = "#4CAF50";
 const errorColor = "#E53935";
 
 const videoBg = document.querySelector(".video-bg");
-let projectVideoURL;
 
-videoBg.src = "/frontend/dist/assets/videos/test-video-1080p.mp4";
-videoBg.play();
+fetch('/videos')
+  .then(res => res.json())
+  .then(videoSources => {
+    let currVideoIndex = 0;
+    function playVideo(index) {
+      videoBg.src = `/frontend/dist/assets/videos/${videoSources[index]}`;
+      videoBg.load();
+      videoBg.play();
+    }
+
+    playVideo(currVideoIndex);
+    videoBg.addEventListener("ended", () => {
+      currVideoIndex = (currVideoIndex + 1) % videoSources.length;
+      playVideo(currVideoIndex);
+    });
+  });
 
 const title = document.querySelector("#landing-content h1");
 const subTitle = document.querySelector("#landing-content p");
@@ -84,8 +97,79 @@ moreProjectsSection.addEventListener("click", () => {
     window.location.href = "https://github.com/UnveiledSafe8";
 });
 
-const contactButton = document.querySelector("#contact button");
+const header = document.querySelector("header");
 
-contactButton.addEventListener("click", (e) => {
+window.addEventListener("scroll", () => {
+    const scrollPos = window.scrollY;
+    if (scrollPos > window.innerHeight * 0.6) {
+        header.style.opacity = 1;
+    } else {
+        header.style.opacity = 0;
+    }
+});
+
+const sectionRatios = new Map();
+const navLinks = document.querySelectorAll("nav ul li a");
+
+const navObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        sectionRatios.set(entry.target.id, entry.intersectionRatio);
+    });
+
+    let maxRatio = 0;
+    let activeSection = null;
+
+    for (const [id, ratio] of sectionRatios) {
+        if (ratio > maxRatio) {
+            maxRatio = ratio;
+            activeSection = id;
+        }
+    }
+
+    navLinks.forEach((link) => {
+        const linkHref = link.getAttribute("href").slice(1,);
+
+        if (linkHref === activeSection && activeSection !== "resume" && activeSection !== "more-projects") {
+            link.children[link.children.length - 1].style.background = secondaryColor;
+        } else if (activeSection !== "resume" && activeSection !== "more-projects") {
+            link.children[link.children.length - 1].style.background = "#77777777";
+        }
+    })
+}, {threshold: Array.from({length: 101}, (_, i) => i / 100)});
+
+document.querySelectorAll("section").forEach(section => {
+    navObserver.observe(section);
+});
+
+navLinks.forEach((link) => {
+    link.addEventListener("mouseenter", () => {
+        link.children[0].style.opacity = 1;
+        link.children[1].style.transform = "scale(1.25)";
+    });
+
+    link.addEventListener("mouseleave", () => {
+        link.children[0].style.opacity = 0;
+        link.children[1].style.transform = "scale(1)";
+    });
+});
+
+const formSubmitButton = document.querySelector("button[type='submit']");
+
+formSubmitButton.addEventListener("click", (e) => {
     e.preventDefault();
+
+    const formName = document.getElementById("name").value;
+    const formEmail = document.getElementById("email").value;
+    const formSubject = document.getElementById("subject").value;
+    const formMessage = document.getElementById("message").value;
+
+    if (formName === "") {
+        alert("Name Required");
+    } else if (!formEmail.match(/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]+$/)) {
+        alert("Invalid Email");
+    } else if (formSubject === "") {
+        alert("Subject Required");
+    } else if (formMessage === "") {
+        alert("Message Required");
+    }
 });
