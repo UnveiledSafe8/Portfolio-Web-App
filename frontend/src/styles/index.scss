@@ -3,12 +3,16 @@
 $primary-color: #7F00FF;
 $primary-dark: #5900B3;
 $primary-light: #B266FF;
+
 $secondary-color: #D4AF37;
 $secondary-dark: #A17F27;
+
 $text-primary: #F0F0F5;
 $text-secondary: #9696A0;
+
 $bg1-color: #121219;
 $bg2-color: #1F1F29;
+
 $success: #4CAF50;
 $error: #E53935;
 
@@ -21,22 +25,22 @@ $error: #E53935;
 html {
     font-family: "Inter", sans-serif;
     scroll-behavior: smooth;
+}
 
-    body {
-        width: 100%;
-        height: 100%;
-        position: relative;
-        min-height: 100vh;
-        border: 1vw ridge $secondary-dark;
-        overflow-x: hidden;
-        font-size: clamp(0.875rem, 1vw, 1.1rem);
+body {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    min-height: 100vh;
+    border: 1vw ridge $secondary-dark;
+    overflow-x: hidden;
+    font-size: clamp(0.875rem, 1vw, 1.1rem);
+}
 
-        main {
-        width: 100%;
-        height: 100%;
-        color: $text-primary;
-        }
-    }
+main {
+    width: 100%;
+    height: 100%;
+    color: $text-primary;
 }
 
 header {

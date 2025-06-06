@@ -14,7 +14,7 @@ def index():
 
 @app.get("/resume")
 def get_resume():
-    return FileResponse("/assets/docs/resume.pdf")
+    return FileResponse("frontend/dist/assets/docs/resume.pdf")
 
 @app.get("/videos")
 def get_video_list():
