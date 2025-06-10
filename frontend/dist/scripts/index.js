@@ -116,14 +116,29 @@ formSubmitButton.addEventListener("click", (e) => {
     const formMessage = document.getElementById("message").value;
     if (!formName) {
         alert("Name Required");
+        return;
     }
     else if (!formEmail.match(/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]+$/)) {
         alert("Invalid Email");
+        return;
     }
     else if (!formSubject) {
         alert("Subject Required");
+        return;
     }
     else if (!formMessage) {
         alert("Message Required");
+        return;
     }
+    fetch("/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            name: formName,
+            email: formEmail,
+            subject: formSubject,
+            content: formMessage
+        })
+    })
+        .then(res => res.json());
 });

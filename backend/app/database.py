@@ -1,0 +1,9 @@
+from sqlalchemy import create_engine
+from sqlalchemy.orm import declarative_base, sessionmaker
+
+engine = create_engine("postgresql+psycopg2://postgres:password@localhost:5432/portfolio_database", echo=True)
+
+Base = declarative_base()
+
+Base.metadata.create_all(engine)
+Session = sessionmaker(bind=engine)
