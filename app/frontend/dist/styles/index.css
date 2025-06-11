@@ -476,6 +476,7 @@ section:nth-of-type(even) {
   margin-bottom: 2em;
   padding: 0.5em;
   transition: all 0.3s ease-in-out;
+  font-size: 1em;
 }
 
 #contact input:focus, #contact textarea:focus {

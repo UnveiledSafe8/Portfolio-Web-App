@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres 
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=portfolio_database
+  
+  app:
+    image: unveiledsafe8/portfolio-app:v1.0
+    container_name: app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres

@@ -110,10 +110,14 @@ navLinks.forEach((link) => {
 const formSubmitButton = document.querySelector("button[type='submit']");
 formSubmitButton.addEventListener("click", (e) => {
     e.preventDefault();
-    const formName = document.getElementById("name").value;
-    const formEmail = document.getElementById("email").value;
-    const formSubject = document.getElementById("subject").value;
-    const formMessage = document.getElementById("message").value;
+    const formNameInput = document.getElementById("name");
+    const formEmailInput = document.getElementById("email");
+    const formSubjectInput = document.getElementById("subject");
+    const formMessageInput = document.getElementById("message");
+    const formName = formNameInput.value;
+    const formEmail = formEmailInput.value;
+    const formSubject = formSubjectInput.value;
+    const formMessage = formMessageInput.value;
     if (!formName) {
         alert("Name Required");
         return;
@@ -140,5 +144,12 @@ formSubmitButton.addEventListener("click", (e) => {
             content: formMessage
         })
     })
-        .then(res => res.json());
+        .then(res => res.json())
+        .then(newData => {
+        alert("Message Sent!");
+        formNameInput.value = '';
+        formEmailInput.value = '';
+        formSubjectInput.value = '';
+        formMessageInput.value = '';
+    });
 });

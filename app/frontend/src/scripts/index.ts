@@ -133,10 +133,15 @@ const formSubmitButton = document.querySelector<HTMLButtonElement>("button[type=
 formSubmitButton.addEventListener("click", (e) => {
     e.preventDefault();
 
-    const formName = (document.getElementById("name") as HTMLInputElement).value;
-    const formEmail = (document.getElementById("email") as HTMLInputElement).value;
-    const formSubject = (document.getElementById("subject") as HTMLInputElement).value;
-    const formMessage = (document.getElementById("message") as HTMLTextAreaElement).value;
+    const formNameInput = (document.getElementById("name") as HTMLInputElement);
+    const formEmailInput = (document.getElementById("email") as HTMLInputElement);
+    const formSubjectInput = (document.getElementById("subject") as HTMLInputElement);
+    const formMessageInput = (document.getElementById("message") as HTMLTextAreaElement);
+
+    const formName = formNameInput.value;
+    const formEmail = formEmailInput.value;
+    const formSubject = formSubjectInput.value;
+    const formMessage = formMessageInput.value;
 
     if (!formName) {
         alert("Name Required");
@@ -163,4 +168,11 @@ formSubmitButton.addEventListener("click", (e) => {
         })
     })
         .then(res => res.json())
+        .then(newData => {
+            alert("Message Sent!");
+            formNameInput.value = '';
+            formEmailInput.value = '';
+            formSubjectInput.value = '';
+            formMessageInput.value = '';
+        });
 });
