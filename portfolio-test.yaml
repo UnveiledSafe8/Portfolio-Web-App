@@ -13,7 +13,7 @@ services:
     restart: always
   
   app:
-    image: unveiledsafe8/portfolio-app:v1.0
+    build: .
     container_name: app
     ports:
       - "8000:8000"

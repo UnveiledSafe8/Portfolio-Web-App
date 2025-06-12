@@ -201,6 +201,7 @@ section:nth-of-type(even) {
   grid-area: img;
   border-radius: 50%;
   border: 4px ridge #D4AF37;
+  box-shadow: 0 0 1.75em 0.2em #D4AF37;
   width: 100%;
   object-fit: cover;
   aspect-ratio: 1;
@@ -208,12 +209,17 @@ section:nth-of-type(even) {
   top: -4.5em;
 }
 
+#headshot:hover {
+  box-shadow: 0 0 1.75em 0.4em #D4AF37;
+}
+
 #skills .section-content {
   display: grid;
-  grid-template-areas: "tech tech design design design" "tech tech tools tools knowledge";
-  grid-template-columns: repeat(5, 1fr);
-  column-gap: 6em;
-  padding-right: 5em;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-areas: "tech tech tech design design design" "tech tech tech tools frameworks knowledge";
+  column-gap: 2.5em;
+  row-gap: 2em;
+  padding-right: 3em;
 }
 
 .skill-topic {
@@ -222,6 +228,10 @@ section:nth-of-type(even) {
 
 .skill-topic#technology {
   grid-area: tech;
+}
+
+.skill-topic#libraries_frameworks {
+  grid-area: frameworks;
 }
 
 .skill-topic#technology .skill-topic-content {
@@ -551,6 +561,18 @@ footer li:hover {
   cursor: pointer;
 }
 
+@media (max-width: 1439px) {
+  #skills .section-content {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: "tech design" "tech design" "tools frameworks" "knowledge knowledge";
+  }
+  .technology-card {
+    width: 22%;
+  }
+  #design .technology-card {
+    width: 15%;
+  }
+}
 @media (max-width: 1000px) {
   .section-heading {
     padding-right: 10%;
@@ -569,7 +591,7 @@ footer li:hover {
     width: 12em;
   }
   #skills .section-content {
-    grid-template-areas: "tech tech" "design design" "tools knowledge";
+    grid-template-areas: "tech tech" "design design" "tools frameworks" "knowledge knowledge";
     grid-template-columns: repeat(2, 1fr);
     row-gap: 3em;
   }
@@ -587,6 +609,9 @@ footer li:hover {
   }
 }
 @media (max-width: 500px) {
+  header {
+    display: none;
+  }
   .section-wrapper {
     padding: 3em;
   }
@@ -594,7 +619,7 @@ footer li:hover {
     padding-right: 2%;
   }
   #skills .section-content {
-    grid-template-areas: "tech" "design" "tools" "knowledge";
+    grid-template-areas: "tech" "design" "tools" "frameworks" "knowledge";
     grid-template-columns: repeat(1, 1fr);
   }
   .technology-card {
@@ -619,26 +644,6 @@ footer li:hover {
   }
   #form-subheading {
     width: 100%;
-  }
-  header {
-    position: fixed;
-    z-index: 5;
-    opacity: 0;
-    display: none;
-    transition: all 0.3s ease-in;
-  }
-  header nav ul li a {
-    height: 2.5em;
-    gap: 1em;
-  }
-  header nav ul li a p {
-    font-size: 2.5em;
-    line-height: 1;
-    opacity: 1;
-    transition: all 0.2s ease-in-out;
-  }
-  header nav ul li a span {
-    display: none;
   }
 }
 
