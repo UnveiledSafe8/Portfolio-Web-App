@@ -14,7 +14,7 @@ services:
     image: unveiledsafe8/portfolio-app:v1.0
     container_name: app
     ports:
-      - "80:80"
+      - "8000:8000"
     depends_on:
       - postgres
     restart: always
