@@ -1,5 +1,7 @@
 services:
   postgres:
+    env_file:
+      - ./.env
     image: postgres
     container_name: ${POSTGRES_CONTAINER}
     expose:
@@ -13,6 +15,8 @@ services:
     restart: always
   
   app:
+    env_file:
+      - ./.env
     image: unveiledsafe8/portfolio-app:v1.0
     container_name: ${APP_CONTAINER}
     ports:
@@ -20,8 +24,6 @@ services:
     depends_on:
       - postgres
     restart: always
-    env_file:
-      - ./env
 
 volumes:
   db-data:
