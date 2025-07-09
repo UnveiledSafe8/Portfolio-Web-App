@@ -14,12 +14,14 @@ services:
   
   app:
     image: unveiledsafe8/portfolio-app:v1.0
-    container_name: app
+    container_name: ${APP_CONTAINER}
     ports:
       - "${WEB_PORT}:8000"
     depends_on:
       - postgres
     restart: always
+    env_file:
+      - ./env
 
 volumes:
   db-data:
